@@ -32,7 +32,6 @@ export function InspirationInsights() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* Left - Title Card */}
           <div className="lg:col-span-3">
             <div className="bg-surface rounded-3xl p-10 md:p-12 min-h-[200px] lg:h-[280px] flex items-center">
               <h2 className="text-[28px] md:text-[32px] font-bold text-textDark uppercase leading-tight">
@@ -42,7 +41,6 @@ export function InspirationInsights() {
             </div>
           </div>
 
-          {/* Middle - Insight List */}
           <div className="lg:col-span-4 flex flex-col justify-center">
             <div className="flex flex-col">
               {INSIGHTS.map((insight) => {
@@ -56,8 +54,8 @@ export function InspirationInsights() {
                   >
                     <h4
                       className={`text-[15px] font-bold transition-colors ${isActive
-                          ? "text-primary underline underline-offset-2 mb-2"
-                          : "text-textDark hover:text-primary"
+                        ? "text-primary underline underline-offset-2 mb-2"
+                        : "text-textDark hover:text-primary"
                         }`}
                     >
                       {insight.title}
@@ -73,7 +71,6 @@ export function InspirationInsights() {
             </div>
           </div>
 
-          {/* Right - Image Cards */}
           <div className="lg:col-span-5 flex gap-3 h-[420px] lg:h-[450px]">
             {IMAGE_CARDS.map((card) => {
               const isWide = card.id === activeId || card.id === "pre-market";

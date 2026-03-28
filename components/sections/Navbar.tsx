@@ -24,7 +24,6 @@ export function Navbar() {
         }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/demo-demo-icon-139882881 1.png"
@@ -35,7 +34,6 @@ export function Navbar() {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <Link
@@ -48,7 +46,6 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Right Actions */}
         <div className="hidden lg:flex items-center gap-5">
           <button
             className="text-textDark hover:text-primary transition-colors"
@@ -64,7 +61,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Toggle */}
         <button
           className="lg:hidden text-textDark"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -77,7 +73,6 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg py-4 px-6 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
