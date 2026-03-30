@@ -10,7 +10,7 @@ export function Hero() {
           src="/futuristic-office-cover-diverse-professionals-holograms-data-analysis-career-growth 1.png"
           alt="Office Background"
           fill
-          className="mt-40 -ml-48 rotate-35"
+          className="mt-36 -ml-64 rotate-35"
           priority
         />
       </div>

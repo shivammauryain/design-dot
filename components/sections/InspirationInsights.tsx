@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import { INSIGHTS } from "@/lib/constants";
 
@@ -26,62 +23,62 @@ const IMAGE_CARDS = [
 ];
 
 export function InspirationInsights() {
-  const [activeId, setActiveId] = useState("pre-market");
-
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          <div className="lg:col-span-3">
-            <div className="bg-surface rounded-3xl p-10 md:p-12 min-h-[200px] lg:h-[280px] flex items-center">
-              <h2 className="text-[28px] md:text-[32px] font-bold text-textDark uppercase leading-tight">
+    <section className="py-24 bg-[#F9FAFB]">
+      <div className="container mx-auto px-6 md:px-12 w-full max-w-[1440px]">
+        {/* Same layout ratio as AboutFirm: 2/4/6 or 2/5/5 roughly */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+          
+          {/* Title box - 2 cols */}
+          <div className="lg:col-span-2">
+            <div className="bg-[#EEF2F6] rounded-3xl p-6 md:p-8 min-h-[220px] flex items-center justify-center shadow-sm">
+              <h2 className="text-[26px] md:text-[30px] font-extrabold text-textDark uppercase leading-tight text-center">
                 INSPIRATION &<br />
                 INSIGHTS
               </h2>
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex flex-col justify-center">
-            <div className="flex flex-col">
-              {INSIGHTS.map((insight) => {
-                const isActive = activeId === insight.id;
+          {/* Text list (ALL visible, NO accordion) - 4 cols */}
+          <div className="lg:col-span-4 flex flex-col justify-start pt-2">
+            <div className="flex flex-col gap-6">
+              {INSIGHTS.map((insight, index) => {
+                const isActive = index === 0;
                 return (
                   <div
                     key={insight.id}
-                    className={`border-t-2 py-4 cursor-pointer transition-all ${isActive ? "border-primary" : "border-border/50"
-                      }`}
-                    onClick={() => setActiveId(insight.id)}
+                    className="flex flex-col pb-4 border-b border-gray-200 last:border-0"
                   >
-                    <h4
-                      className={`text-[15px] font-bold transition-colors ${isActive
-                        ? "text-primary underline underline-offset-2 mb-2"
-                        : "text-textDark hover:text-primary"
-                        }`}
+                    <h4 
+                      className={`text-[15px] font-bold mb-2 ${
+                        isActive ? "text-primary underline underline-offset-4" : "text-textDark"
+                      }`}
                     >
                       {insight.title}
                     </h4>
-                    {isActive && (
-                      <p className="text-[12px] text-textLight leading-relaxed mt-1">
-                        {insight.desc}
-                      </p>
-                    )}
+                    <p 
+                      className={`text-[13px] leading-[1.8] ${
+                        isActive ? "text-primary" : "text-textLight"
+                      }`}
+                    >
+                      {insight.desc}
+                    </p>
                   </div>
                 );
               })}
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex gap-3 h-[420px] lg:h-[450px]">
-            {IMAGE_CARDS.map((card) => {
-              const isWide = card.id === activeId || card.id === "pre-market";
-              const isExpanded = card.id === "pre-market";
-
+          {/* Image cards - 6 cols */}
+          <div className="lg:col-span-6 flex gap-4 h-[450px] md:h-[550px]">
+            {IMAGE_CARDS.map((card, index) => {
+              const isFirst = index === 0;
               return (
                 <div
                   key={card.id}
-                  className={`relative rounded-2xl overflow-hidden shadow-sm transition-all duration-500 cursor-pointer ${isExpanded ? "flex-3" : "flex-[0.7]"
-                    }`}
-                  onClick={() => setActiveId(card.id)}
+                  className={`relative rounded-3xl overflow-hidden shadow-lg ${
+                    isFirst ? "flex-[2.5]" : "flex-[0.8]"
+                  }`}
                 >
                   <Image
                     src={card.img}
@@ -89,23 +86,23 @@ export function InspirationInsights() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
-                  <div className="absolute inset-0 p-5 flex items-end">
-                    {isExpanded ? (
-                      <div className="text-white w-full">
-                        <h5 className="font-bold text-lg mb-1">
+                  <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end">
+                    {isFirst ? (
+                      <div className="text-white">
+                        <h5 className="font-bold text-[20px] mb-2 tracking-wide">
                           {card.title}
                         </h5>
                         {card.desc && (
-                          <p className="text-[11px] text-white/85 leading-relaxed">
+                          <p className="text-[13px] text-gray-200 leading-[1.6]">
                             {card.desc}
                           </p>
                         )}
                       </div>
                     ) : (
-                      <div className="w-full h-full relative">
-                        <h5 className="text-white font-bold text-sm whitespace-nowrap absolute bottom-8 -left-16 transform -rotate-90 origin-bottom-left w-[250px] text-left">
+                      <div className="w-full h-full relative flex items-end">
+                        <h5 className="text-white font-extrabold text-[14px] whitespace-nowrap origin-bottom-left -rotate-90 translate-y-[-20px] translate-x-[15px] tracking-wider uppercase">
                           {card.title}
                         </h5>
                       </div>
